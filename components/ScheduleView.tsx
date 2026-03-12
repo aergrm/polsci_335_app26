@@ -120,6 +120,10 @@ const WeekDetailView: React.FC<{ week: Week, onBack: () => void }> = ({ week, on
         <Week4Visuals />
       ) : week.id === 5 ? (
         <Week5Visuals />
+      ) : week.id === 6 ? (
+        <Week6Visuals />
+      ) : week.id === 7 ? (
+        <Week7Visuals />
       ) : (
         <div className="bg-white p-12 rounded-xl shadow-sm border border-gray-100 text-center">
           <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -1797,5 +1801,182 @@ const Week3Visuals: React.FC = () => {
     </div>
   )
 }
+
+const ElectoralThresholds: React.FC = () => {
+  return (
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col">
+       <div className="mb-6">
+        <h4 className="text-lg font-bold text-gray-900">Electoral Thresholds</h4>
+        <p className="text-sm text-gray-600">
+          The minimum share of the vote required to win seats.
+        </p>
+      </div>
+      <div className="flex-grow flex flex-col justify-center gap-4">
+         <div className="relative pt-4">
+            <div className="flex justify-between text-xs font-bold mb-1">
+               <span>Party A (6%)</span>
+               <span className="text-green-600">Wins Seats</span>
+            </div>
+            <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+               <div className="h-full bg-blue-600 w-[60%]"></div>
+            </div>
+         </div>
+         <div className="relative">
+            <div className="absolute left-[50%] top-[-20px] bottom-[-20px] w-0.5 bg-red-500 z-10"></div>
+            <div className="absolute left-[50%] top-[-35px] -translate-x-1/2 text-[10px] font-bold text-red-600 bg-red-50 px-1 rounded border border-red-200">5% Threshold</div>
+            
+            <div className="flex justify-between text-xs font-bold mb-1 text-gray-500">
+               <span>Party B (4%)</span>
+               <span className="text-red-500">No Seats</span>
+            </div>
+            <div className="h-4 bg-gray-200 rounded-full overflow-hidden opacity-50">
+               <div className="h-full bg-gray-500 w-[40%]"></div>
+            </div>
+         </div>
+         <p className="text-xs text-gray-500 mt-4 text-center">
+           Thresholds prevent extreme fragmentation but increase disproportionality by wasting votes for small parties.
+         </p>
+      </div>
+    </div>
+  );
+};
+
+const GallagherIndex: React.FC = () => {
+  return (
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col">
+       <div className="mb-6">
+        <h4 className="text-lg font-bold text-gray-900">Gallagher Index</h4>
+        <p className="text-sm text-gray-600">
+          Measures disproportionality between votes and seats.
+        </p>
+      </div>
+      <div className="flex-grow flex flex-col items-center justify-center">
+         <div className="bg-slate-800 text-white p-4 rounded-lg text-center font-mono text-lg shadow-inner mb-6">
+            LSq = √ ( ½ Σ (v<sub>i</sub> - s<sub>i</sub>)² )
+         </div>
+         <div className="flex w-full justify-between items-end gap-4">
+            <div className="flex-1 flex flex-col items-center">
+               <div className="w-full h-24 bg-green-100 border-b-4 border-green-500 rounded-t flex items-center justify-center">
+                  <span className="text-2xl font-bold text-green-700">~1-3</span>
+               </div>
+               <span className="text-xs font-bold mt-2 text-center">Highly Proportional<br/>(e.g., Netherlands)</span>
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+               <div className="w-full h-32 bg-yellow-100 border-b-4 border-yellow-500 rounded-t flex items-center justify-center">
+                  <span className="text-2xl font-bold text-yellow-700">~5-8</span>
+               </div>
+               <span className="text-xs font-bold mt-2 text-center">Mixed/Moderate<br/>(e.g., Germany)</span>
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+               <div className="w-full h-40 bg-red-100 border-b-4 border-red-500 rounded-t flex items-center justify-center">
+                  <span className="text-2xl font-bold text-red-700">10+</span>
+               </div>
+               <span className="text-xs font-bold mt-2 text-center">Disproportional<br/>(e.g., UK, USA)</span>
+            </div>
+         </div>
+      </div>
+    </div>
+  );
+};
+
+const Week6Visuals: React.FC = () => {
+  return (
+    <div className="space-y-12 animate-fade-in">
+      <section>
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <Vote className="text-uwm-gold" /> Electoral Systems II (Ch 8 & 9)
+          </h3>
+          <p className="text-gray-700 leading-relaxed mb-8 max-w-3xl">
+            Building on the basics of electoral systems, we explore how rules like <strong>Electoral Thresholds</strong> and concepts like <strong>Disproportionality</strong> affect party representation.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <ElectoralThresholds />
+             <GallagherIndex />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+const CabinetTypes: React.FC = () => {
+  return (
+    <div className="col-span-1 md:col-span-3 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+       <div className="mb-6">
+        <h4 className="text-lg font-bold text-gray-900">Types of Cabinets</h4>
+        <p className="text-sm text-gray-600">
+          Different ways governments form based on parliamentary seat shares.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+         {/* Minimal Winning */}
+         <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-center">
+            <h5 className="font-bold text-blue-900 mb-2">Minimal Winning Coalition</h5>
+            <div className="flex justify-center items-center gap-1 mb-3">
+               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">40%</div>
+               <span className="text-gray-400 font-bold">+</span>
+               <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold">15%</div>
+               <span className="text-gray-400 font-bold">=</span>
+               <div className="text-lg font-black text-blue-800">55%</div>
+            </div>
+            <p className="text-xs text-blue-800">
+               Just enough parties to control a majority (&gt;50%). If any party leaves, the government falls.
+            </p>
+         </div>
+         
+         {/* Oversized */}
+         <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 text-center">
+            <h5 className="font-bold text-indigo-900 mb-2">Oversized (Grand) Coalition</h5>
+            <div className="flex justify-center items-center gap-1 mb-3">
+               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">40%</div>
+               <span className="text-gray-400 font-bold">+</span>
+               <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">35%</div>
+               <span className="text-gray-400 font-bold">=</span>
+               <div className="text-lg font-black text-indigo-800">75%</div>
+            </div>
+            <p className="text-xs text-indigo-800">
+               More parties than strictly necessary. Common in consensus democracies or times of crisis.
+            </p>
+         </div>
+
+         {/* Minority */}
+         <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 text-center">
+            <h5 className="font-bold text-gray-800 mb-2">Minority Government</h5>
+            <div className="flex justify-center items-center gap-1 mb-3">
+               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">45%</div>
+               <span className="text-gray-400 font-bold">...</span>
+               <div className="text-lg font-black text-gray-600">&lt; 50%</div>
+            </div>
+            <p className="text-xs text-gray-600">
+               Governing party/coalition does not control a majority. Relies on ad-hoc support from other parties to pass laws.
+            </p>
+         </div>
+      </div>
+    </div>
+  );
+};
+
+const Week7Visuals: React.FC = () => {
+  return (
+    <div className="space-y-12 animate-fade-in">
+      <section>
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <Landmark className="text-uwm-gold" /> Exec-Leg Relations I (Ch 6-7)
+          </h3>
+          <p className="text-gray-700 leading-relaxed mb-8 max-w-3xl">
+            We examine how cabinets are formed and the balance of power between the executive and the legislature.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+             <CabinetTypes />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default ScheduleView;
